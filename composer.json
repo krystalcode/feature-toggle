@@ -1,0 +1,22 @@
+{
+    "name": "krystalcode/feature-toggle",
+    "type": "library",
+    "description": "A feature toggle library.",
+    "keywords": [],
+    "homepage": "https://github.com/krystalcode/feature-toggle",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Dimitris Bozelos",
+            "email": "dbozelos@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/yaml": "2.5.*"
+    },
+    "autoload": {
+        "psr-0": { "FeatureToggle\\": "src" }
+    }
+}

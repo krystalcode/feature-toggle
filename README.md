@@ -31,13 +31,10 @@ prod: false
 The following code will enable the feature on the development and stage environments and disable it on the production environment.
 
 ```
-use KrystalCode\FeatureToggle\ConfigLoaderYaml;
-use KrystalCode\FeatureToggle\ToggleConfig;
-use Symfony\Component\Yaml\Parser;
+use KrystalCode\FeatureToggle\Toggle;
 
-$loader = new ConfigLoaderYaml(new Parser(), '/absolute/path/to/config.yml');
-$toggle = new ToggleConfig($loader, $yourCurrentEnvironment);
-if ($toggle->on()) {
+$toggle = Toggle::get('yaml');
+if ($toggle('absolute/path/to/config.yml', $yourCurrentEnvironment)) {
     // Code to be executed when the feature is enabled.
 }
 ```
@@ -53,13 +50,10 @@ theme: blue
 The following code will enable the feature when the value of the variable "theme" is "blue".
 
 ```
-use KrystalCode\FeatureToggle\ConfigLoaderYaml;
-use KrystalCode\FeatureToggle\ToggleConfig;
-use Symfony\Component\Yaml\Parser;
+use KrystalCode\FeatureToggle\Toggle;
 
-$loader = new ConfigLoaderYaml(new Parser(), '/absolute/path/to/config.yml');
-$toggle = new ToggleConfig($loader, 'theme', 'blue');
-if ($toggle->on()) {
+$toggle = Toggle::get('yaml');
+if ($toggle('absolute/path/to/config.yml', 'theme', 'blue')) {
     // Code to be executed when the feature is enabled.
 }
 ```
@@ -83,6 +77,36 @@ class TogglePremiumUser implements ToggleInterface
         // You can also add your logic here if preferred.
         return $this->user->isPremium();
     }
+}
+```
+
+## Full syntax
+
+The examples above are using the easy syntax provided by a helper class. The full syntax for these examples would be:
+
+```
+use KrystalCode\FeatureToggle\ConfigLoaderYaml;
+use KrystalCode\FeatureToggle\ToggleConfig;
+use Symfony\Component\Yaml\Parser;
+
+$loader = new ConfigLoaderYaml(new Parser(), '/absolute/path/to/config.yml');
+$toggle = new ToggleConfig($loader, $yourCurrentEnvironment);
+if ($toggle->on()) {
+    // Code to be executed when the feature is enabled.
+}
+```
+
+and
+
+```
+use KrystalCode\FeatureToggle\ConfigLoaderYaml;
+use KrystalCode\FeatureToggle\ToggleConfig;
+use Symfony\Component\Yaml\Parser;
+
+$loader = new ConfigLoaderYaml(new Parser(), '/absolute/path/to/config.yml');
+$toggle = new ToggleConfig($loader, 'theme', 'blue');
+if ($toggle->on()) {
+    // Code to be executed when the feature is enabled.
 }
 ```
 

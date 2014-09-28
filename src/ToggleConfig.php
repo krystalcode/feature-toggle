@@ -69,7 +69,7 @@ class ToggleConfig implements ToggleInterface
         // If an expected value is given, return whether the real value is equal
         // to the expected value.
         if ($this->varValue !== null) {
-            return self::$config[$this->varName] == $this->varValue;
+            return self::$config[$this->varName] === $this->varValue;
         }
 
         // If no expected value is given, return the real value.

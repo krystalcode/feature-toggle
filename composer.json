@@ -17,6 +17,6 @@
         "symfony/yaml": "2.5.*"
     },
     "autoload": {
-        "psr-0": { "FeatureToggle\\": "src" }
+        "psr-4": { "KrystalCode\\FeatureToggle\\": "src/" }
     }
 }

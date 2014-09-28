@@ -1,7 +1,7 @@
 {
     "name": "krystalcode/feature-toggle",
     "type": "library",
-    "description": "A feature toggle library.",
+    "description": "Extensible feature toggle functionality for PHP applications.",
     "keywords": [],
     "homepage": "https://github.com/krystalcode/feature-toggle",
     "license": "MIT",

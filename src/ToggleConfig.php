@@ -17,7 +17,8 @@ namespace KrystalCode\FeatureToggle;
  *
  * @author Dimitris Bozelos <dbozelos@gmail.com>
  */
-class ToggleConfig implements ToggleInterface {
+class ToggleConfig implements ToggleInterface
+{
     protected $varName;
     protected $varValue;
     protected static $config = array();
@@ -28,7 +29,8 @@ class ToggleConfig implements ToggleInterface {
      * @param string $varName  The name of the parameter to check.
      * @param mixed  $varValue The expected value of the parameter. @see on().
      */
-    public function __construct(ConfigLoaderInterface $configLoader, $varName, $varValue = null) {
+    public function __construct(ConfigLoaderInterface $configLoader, $varName, $varValue = null)
+    {
         // The variables are statically stored so that we do not need to load
         // them again within the same context e.g. same request.
         // Load them only if not loaded yet.
@@ -62,7 +64,8 @@ class ToggleConfig implements ToggleInterface {
      *
      * @return boolean The result of the case evaluation.
      */
-    public function on() {
+    public function on()
+    {
         // If an expected value is given, return whether the real value is equal
         // to the expected value.
         if ($this->varValue !== null) {

@@ -28,7 +28,8 @@ class ConfigLoaderYaml implements ConfigLoaderInterface {
      * @param Symfony\Component\Yaml\Parser $parser The YAML parser that will be used to load the variables from the .yml file.
      * @param string                        $input  The path to the YAML file or the YAML string that contains the configuration variables.
      */
-    public function __construct(Parser $parser, $input) {
+    public function __construct(Parser $parser, $input)
+    {
         $this->parser = $parser;
         $this->input  = $input;
     }
@@ -43,7 +44,8 @@ class ConfigLoaderYaml implements ConfigLoaderInterface {
      *
      * @return array An array containing the loaded configuration variables.
      */
-    public function load() {
+    public function load()
+    {
         $file  = '';
 
         if (strpos($this->input, "\n") === false && is_file($this->input)) {

@@ -2,5 +2,6 @@
 
 namespace KrystalCode\FeatureToggle;
 
-class Exception extends \Exception {
+class Exception extends \Exception
+{
 }

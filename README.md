@@ -2,7 +2,7 @@
 
 ## About
 
-FeatureToggle is an easy to use, extensible library that aims to provide feature toggle functionality for PHP application.
+FeatureToggle is an easy to use, extensible library that aims to provide feature toggle functionality for PHP applications.
 
 ## Model
 
@@ -18,7 +18,7 @@ Provided Toggles
 
 ### ToggleConfigYaml
 
-ToggleConfigYaml loads the configuration variables from a YAML file and decides based on the a variable value. It extends the ToggleConfig class which statically stores the configuration vatiables so that they are loaded only once even if feature toggling is used in multiple places in the code.
+ToggleConfigYaml loads the configuration variables from a YAML file and decides based on a variable value. It extends the ToggleConfig class which statically stores the configuration vatiables so that they are loaded only once even if feature toggling is used in multiple places in the code.
 
 Assuming the following configuration file contents:
 
@@ -38,7 +38,7 @@ use Symfony\Component\Yaml\Parser;
 $loader = new ConfigLoaderYaml(new Parser(), '/absolute/path/to/config.yml');
 $toggle = new ToggleConfig($loader, $yourCurrentEnvironment);
 if ($toggle->on()) {
-    print 'Include this feature' . PHP_EOL;
+    // Code to be executed when the feature is enabled.
 }
 ```
 
@@ -60,7 +60,7 @@ use Symfony\Component\Yaml\Parser;
 $loader = new ConfigLoaderYaml(new Parser(), '/absolute/path/to/config.yml');
 $toggle = new ToggleConfig($loader, 'theme', 'blue');
 if ($toggle->on()) {
-    print 'Include this feature' . PHP_EOL;
+    // Code to be executed when the feature is enabled.
 }
 ```
 
@@ -84,6 +84,7 @@ class TogglePremiumUser implements ToggleInterface
         return $this->user->isPremium();
     }
 }
+```
 
 ## How to contribute
 

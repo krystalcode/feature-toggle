@@ -10,7 +10,7 @@ The library model is based on Toggles which are classes that define algorithms u
 
 ## Requirements
 
-Currently depends on the Symfony Yaml component.
+Currently depends on the Symfony Yaml component (https://github.com/symfony/yaml).
 
 ## How to use
 

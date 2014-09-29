@@ -23,9 +23,9 @@ ToggleConfigYaml loads the configuration variables from a YAML file and decides 
 Assuming the following configuration file contents:
 
 ```
-dev: true
-stage: true
-prod: false
+awesomefeature/dev: true
+awesomefeature/stage: true
+awesomefeature/prod: false
 ```
 
 The following code will enable the feature on the development and stage environments and disable it on the production environment.
@@ -34,12 +34,12 @@ The following code will enable the feature on the development and stage environm
 use KrystalCode\FeatureToggle\Toggle;
 
 $toggle = Toggle::get('yaml');
-if ($toggle('absolute/path/to/config.yml', $yourCurrentEnvironment)) {
+if ($toggle('absolute/path/to/config.yml', 'awesomefeature/'.$yourCurrentEnvironment)) {
     // Code to be executed when the feature is enabled.
 }
 ```
 
-where the variable $yourCurrentEnvironment should have a value of "dev", "stage" or "prod".
+where the variable $yourCurrentEnvironment should have a value of "dev", "stage" or "prod". On runtime, the code will be executed in the development and staging environments but not in the production environment.
 
 The configuration variables may also have other values apart from true or false. Say you would like to enable a feature only when the blue theme is in use:
 
@@ -90,7 +90,7 @@ use KrystalCode\FeatureToggle\ToggleConfig;
 use Symfony\Component\Yaml\Parser;
 
 $loader = new ConfigLoaderYaml(new Parser(), '/absolute/path/to/config.yml');
-$toggle = new ToggleConfig($loader, $yourCurrentEnvironment);
+$toggle = new ToggleConfig($loader, 'awesomefeature/'.$yourCurrentEnvironment);
 if ($toggle->on()) {
     // Code to be executed when the feature is enabled.
 }

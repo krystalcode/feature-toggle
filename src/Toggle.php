@@ -24,7 +24,7 @@ class Toggle
     {
         switch ($toggleType) {
             case 'yaml':
-                return function ($input, $varName, $varValue) {
+                return function ($input, $varName, $varValue = null) {
                     $loader = new ConfigLoaderYaml(new \Symfony\Component\Yaml\Parser(), $input);
                     $toggle = new ToggleConfig($loader, $varName, $varValue);
                     return $toggle->on();

@@ -29,6 +29,19 @@ class Toggle
                     $toggle = new ToggleConfig($loader, $varName, $varValue);
                     return $toggle->on();
                 };
+            case 'php':
+                return function ($input, $varName, $varValue = null) {
+                    $loader = new ConfigLoaderPhp($input);
+                    $toggle = new ToggleConfig($loader, $varName, $varValue);
+                    return $toggle->on();
+                };
+            default:
+                throw new Exception(
+                    sprintf(
+                        'Unknown Toggle "%s", "yaml" and "php" are currently supported',
+                        $toggleType
+                    )
+                );
                 break;
         }
     }

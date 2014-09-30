@@ -35,6 +35,12 @@ class Toggle
                     $toggle = new ToggleConfig($loader, $varName, $varValue);
                     return $toggle->on();
                 };
+            case 'ini':
+                return function ($input, $varName, $varValue = null) {
+                    $loader = new ConfigLoaderIni($input);
+                    $toggle = new ToggleConfig($loader, $varName, $varValue);
+                    return $toggle->on();
+                };
             default:
                 throw new Exception(
                     sprintf(

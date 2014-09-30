@@ -114,11 +114,13 @@ class TogglePremiumUser implements ToggleInterface
 {
     private $user;
 
-    public function __construct($user) {
+    public function __construct($user)
+    {
         $this->user = $user;
     }
 
-    public function on() {
+    public function on()
+    {
         // You can also add your logic here if preferred.
         return $this->user->isPremium();
     }

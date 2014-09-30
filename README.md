@@ -16,9 +16,9 @@ Currently depends on the Symfony Yaml component (https://github.com/symfony/yaml
 
 Provided Toggles
 
-### ToggleConfigYaml
+### YAML file
 
-ToggleConfigYaml loads the configuration variables from a YAML file and decides based on a variable value. It extends the ToggleConfig class which statically stores the configuration vatiables so that they are loaded only once even if feature toggling is used in multiple places in the code.
+The YAML Toggle (ToggleConfigYaml class) loads the configuration variables from a YAML file and decides based on a variable value. It extends the ToggleConfig class which statically stores the configuration vatiables so that they are loaded only once even if feature toggling is used in multiple places in the code.
 
 Assuming the following configuration file contents:
 
@@ -58,6 +58,51 @@ if ($toggle('absolute/path/to/config.yml', 'theme', 'blue')) {
 }
 ```
 
+### PHP file
+
+You can load the variables from a PHP configuration file. Using the same example as with YAML, your configuration file contents would be:
+
+```
+<?php
+return array(
+    'awesomefeature/dev' => true,
+    'awesomefeature/stage' => true,
+    'awesomefeature/prod' => false,
+);
+```
+
+and your application code would be:
+
+```
+use KrystalCode\FeatureToggle\Toggle;
+
+$toggle = Toggle::get('php');
+if ($toggle('absolute/path/to/config.php', 'awesomefeature/'.$yourCurrentEnvironment)) {
+    // Code to be executed when the feature is enabled.
+}
+```
+
+### INI file
+
+You can load the variables from an INI configuration file (.ini, see http://php.net/manual/en/function.parse-ini-file.php). Using the same example as with YAML, your configuration file contents would be:
+
+```
+awesomefeature/dev = true
+awesomefeature/stage = true
+awesomefeature/prod = false
+```
+
+and your application code would be:
+
+```
+use KrystalCode\FeatureToggle\Toggle;
+
+$toggle = Toggle::get('ini');
+if ($toggle('absolute/path/to/config.ini', 'awesomefeature/'.$yourCurrentEnvironment)) {
+    // Code to be executed when the feature is enabled.
+}
+```
+
 ## How to extend
 
 Say you would like to enable a feature only for premium users on your website. You can write a custom Toggle as follows:
@@ -82,7 +127,7 @@ class TogglePremiumUser implements ToggleInterface
 
 ## Full syntax
 
-The examples above are using the easy syntax provided by a helper class. The full syntax for these examples would be:
+The examples above are using the easy syntax provided by a helper class. The full syntax for the YAML examples would be:
 
 ```
 use KrystalCode\FeatureToggle\ConfigLoaderYaml;
@@ -104,6 +149,32 @@ use KrystalCode\FeatureToggle\ToggleConfig;
 use Symfony\Component\Yaml\Parser;
 
 $loader = new ConfigLoaderYaml(new Parser(), '/absolute/path/to/config.yml');
+$toggle = new ToggleConfig($loader, 'theme', 'blue');
+if ($toggle->on()) {
+    // Code to be executed when the feature is enabled.
+}
+```
+
+For PHP:
+
+```
+use KrystalCode\FeatureToggle\ConfigLoaderPhp;
+use KrystalCode\FeatureToggle\ToggleConfig;
+
+$loader = new ConfigLoaderYaml('/absolute/path/to/config.php');
+$toggle = new ToggleConfig($loader, 'awesomefeature/'.$yourCurrentEnvironment);
+if ($toggle->on()) {
+    // Code to be executed when the feature is enabled.
+}
+```
+
+and for INI:
+
+```
+use KrystalCode\FeatureToggle\ConfigLoaderIni;
+use KrystalCode\FeatureToggle\ToggleConfig;
+
+$loader = new ConfigLoaderYaml('/absolute/path/to/config.ini');
 $toggle = new ToggleConfig($loader, 'theme', 'blue');
 if ($toggle->on()) {
     // Code to be executed when the feature is enabled.

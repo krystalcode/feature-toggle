@@ -161,7 +161,7 @@ For PHP:
 use KrystalCode\FeatureToggle\ConfigLoaderPhp;
 use KrystalCode\FeatureToggle\ToggleConfig;
 
-$loader = new ConfigLoaderYaml('/absolute/path/to/config.php');
+$loader = new ConfigLoaderPhp('/absolute/path/to/config.php');
 $toggle = new ToggleConfig($loader, 'awesomefeature/'.$yourCurrentEnvironment);
 if ($toggle->on()) {
     // Code to be executed when the feature is enabled.
@@ -174,7 +174,7 @@ and for INI:
 use KrystalCode\FeatureToggle\ConfigLoaderIni;
 use KrystalCode\FeatureToggle\ToggleConfig;
 
-$loader = new ConfigLoaderYaml('/absolute/path/to/config.ini');
+$loader = new ConfigLoaderIni('/absolute/path/to/config.ini');
 $toggle = new ToggleConfig($loader, 'theme', 'blue');
 if ($toggle->on()) {
     // Code to be executed when the feature is enabled.

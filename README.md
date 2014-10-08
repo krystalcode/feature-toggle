@@ -1,3 +1,5 @@
+[ ![Codeship Status for krystalcode/feature-toggle](https://codeship.io/projects/5d166660-314c-0132-ae62-7e635eaa275b/status)](https://codeship.io/projects/40068)
+
 # FeatureToggle
 
 ## About

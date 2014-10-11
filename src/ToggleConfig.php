@@ -38,6 +38,16 @@ class ToggleConfig implements ToggleInterface
             self::$config = $configLoader->load();
         }
 
+        // Throw an exception if the configuration loaded is not in array format.
+        if (!is_array(self::$config)) {
+            throw new Exception(
+                sprintf(
+                    'The configuration loaded must be in array format, "%s" given.',
+                    gettype(self::$config)
+                )
+            );
+        }
+
         // Throw an exception if the requested variable is not defined.
         if (!in_array($varName, array_keys(self::$config))) {
             throw new Exception(
@@ -74,5 +84,23 @@ class ToggleConfig implements ToggleInterface
 
         // If no expected value is given, return the real value.
         return self::$config[$this->varName];
+    }
+
+    /**
+     * Returns the configuration variables loaded in the object.
+     *
+     * @return mixed The configuration variables.
+     */
+    public function get()
+    {
+        return self::$config;
+    }
+
+    /**
+     * Clears the loaded configuration values.
+     */
+    public function clear()
+    {
+        self::$config = null;
     }
 }

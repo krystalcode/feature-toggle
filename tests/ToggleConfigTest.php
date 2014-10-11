@@ -41,7 +41,7 @@ class ToggleConfigTest extends \PHPUnit_Framework_TestCase
 
         $toggle = new ToggleConfig($loader, 'varName1');
 
-        $this->assertEquals($config, $toggle->get());
+        $this->assertEquals($config, $toggle::get());
     }
 
     /**

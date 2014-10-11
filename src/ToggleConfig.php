@@ -91,7 +91,7 @@ class ToggleConfig implements ToggleInterface
      *
      * @return mixed The configuration variables.
      */
-    public function get()
+    public static function get()
     {
         return self::$config;
     }
@@ -99,7 +99,7 @@ class ToggleConfig implements ToggleInterface
     /**
      * Clears the loaded configuration values.
      */
-    public function clear()
+    public static function clear()
     {
         self::$config = null;
     }

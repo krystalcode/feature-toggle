@@ -37,16 +37,24 @@ class ConfigLoaderIni implements ConfigLoaderInterface {
      */
     public function load()
     {
-        // Check if the file is readable.
-        if (strpos($this->input, "\n") === false && is_file($this->input)) {
-            if (false === is_readable($this->input)) {
-                throw new Exception(
-                    sprintf(
-                        'Unable to parse "%s" as the file is not readable.',
-                        $this->input
-                    )
-                );
-            }
+        // Check if the input is a file.
+        if (!is_file($this->input)) {
+            throw new Exception(
+                sprintf(
+                    'The input "%s" is not a file.',
+                    $this->input
+                )
+            );
+        }
+
+        // Check if the input is readable.
+        if (!is_readable($this->input)) {
+            throw new Exception(
+                sprintf(
+                    'The input file "%s" is not readable.',
+                    $this->input
+                )
+            );
         }
 
         $config = parse_ini_file($this->input);
@@ -62,5 +70,15 @@ class ConfigLoaderIni implements ConfigLoaderInterface {
         }
 
         return $config;
+    }
+
+    /**
+     * Returns the input passed to the object.
+     *
+     * @return string The input that should be the path to the .ini configuration file.
+     */
+    public function getInput()
+    {
+        return $this->input;
     }
 }

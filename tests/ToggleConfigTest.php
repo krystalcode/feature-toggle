@@ -41,7 +41,45 @@ class ToggleConfigTest extends \PHPUnit_Framework_TestCase
 
         $toggle = new ToggleConfig($loader, 'varName1');
 
-        $this->assertEquals($config, $toggle::get());
+        $this->assertEquals($config, $toggle::getConfig());
+    }
+
+    public function testIfConstructorStoresVariableName()
+    {
+        $config = array(
+            'varName1' => 'varValue1',
+        );
+
+        $loader = $this->getMockBuilder('\KrystalCode\FeatureToggle\ConfigLoaderPhp')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $loader->expects($this->once())
+            ->method('load')
+            ->willReturn($config);
+
+        $toggle = new ToggleConfig($loader, 'varName1');
+
+        $this->assertEquals('varName1', $toggle->getVarName());
+    }
+
+    public function testIfConstructorStoresVariableExpectedValue()
+    {
+        $config = array(
+            'varName1' => 'varValue1',
+        );
+
+        $loader = $this->getMockBuilder('\KrystalCode\FeatureToggle\ConfigLoaderPhp')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $loader->expects($this->once())
+            ->method('load')
+            ->willReturn($config);
+
+        $toggle = new ToggleConfig($loader, 'varName1', 'varValue1');
+
+        $this->assertEquals('varValue1', $toggle->getVarValue());
     }
 
     /**

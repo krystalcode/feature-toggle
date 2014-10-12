@@ -26,8 +26,8 @@ class ToggleConfig implements ToggleInterface
     /**
      * Constructor.
      *
-     * @param string $varName  The name of the parameter to check.
-     * @param mixed  $varValue The expected value of the parameter. @see on().
+     * @param string $varName  The name of the variable to check.
+     * @param mixed  $varValue The expected value of the variable. @see on().
      */
     public function __construct(ConfigLoaderInterface $configLoader, $varName, $varValue = null)
     {
@@ -52,7 +52,7 @@ class ToggleConfig implements ToggleInterface
         if (!in_array($varName, array_keys(self::$config))) {
             throw new Exception(
                 sprintf(
-                    'The parameter "%s" is not defined.',
+                    'The variable "%s" is not defined.',
                     $varName
                 )
             );
@@ -87,11 +87,31 @@ class ToggleConfig implements ToggleInterface
     }
 
     /**
+     * Returns the name (key) of the requested configuration variable.
+     *
+     * @return string The name of the requested configuration variable.
+     */
+    public function getVarName()
+    {
+        return $this->varName;
+    }
+
+    /**
+     * Returns the expected value of the requested configuration variable.
+     *
+     * @return string The expected value of the requested configuration variable.
+     */
+    public function getVarValue()
+    {
+        return $this->varValue;
+    }
+
+    /**
      * Returns the configuration variables loaded in the object.
      *
      * @return mixed The configuration variables.
      */
-    public static function get()
+    public static function getConfig()
     {
         return self::$config;
     }

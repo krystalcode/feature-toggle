@@ -20,7 +20,7 @@ class ConfigLoaderPhp implements ConfigLoaderInterface {
     /**
      * Constructor.
      *
-     * @param string $input  The path to the PHP file that contains the configuration variables.
+     * @param string $input The path to the PHP file that contains the configuration variables.
      */
     public function __construct($input)
     {
@@ -36,12 +36,36 @@ class ConfigLoaderPhp implements ConfigLoaderInterface {
      */
     public function load()
     {
-        if (strpos($this->input, "\n") === false && is_file($this->input)) {
-            if (false === is_readable($this->input)) {
-                throw new Exception(sprintf('Unable to parse "%s" as the file is not readable.', $this->input));
-            }
+        // Check if the input is a file.
+        if (!is_file($this->input)) {
+            throw new Exception(
+                sprintf(
+                    'The input "%s" is not a file.',
+                    $this->input
+                )
+            );
+        }
+
+        // Check if the input is readable.
+        if (!is_readable($this->input)) {
+            throw new Exception(
+                sprintf(
+                    'The input file "%s" is not readable.',
+                    $this->input
+                )
+            );
         }
 
         return include($this->input);
+    }
+
+    /**
+     * Returns the input passed to the object.
+     *
+     * @return string The input that should be the path to the php configuration file.
+     */
+    public function getInput()
+    {
+        return $this->input;
     }
 }

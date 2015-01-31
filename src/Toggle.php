@@ -18,6 +18,12 @@ namespace KrystalCode\FeatureToggle;
  */
 class Toggle
 {
+    public static function params(array $input, $varName, $varValue = null) {
+        $loader = new ConfigLoaderArray($input);
+        $toggle = new ToggleConfig($loader, $varName, $varValue);
+        return $toggle->on();
+    }
+
     public static function yaml($input, $varName, $varValue = null) {
         $loader = new ConfigLoaderYaml(new \Symfony\Component\Yaml\Parser(), $input);
         $toggle = new ToggleConfig($loader, $varName, $varValue);

@@ -101,6 +101,32 @@ if (Toggle::ini('absolute/path/to/config.ini', 'awesomefeature/'.$yourCurrentEnv
 }
 ```
 
+### Yii2 Framework
+
+You will need to add your configuration in the params file as an array item with index 'feature-toggle'. Using the same example as with YAML, your configuration file contents would be:
+
+```
+<?php
+
+return [
+    'feature-toggle' => [
+        'awesomefeature/dev' => true,
+        'awesomefeature/stage' => true,
+        'awesomefeature/prod' => false,
+    ],
+];
+```
+
+and your application code would be:
+
+```
+use KrystalCode\FeatureToggle\Toggle;
+
+if (Toggle::yii2('awesomefeature/'.$yourCurrentEnvironment)) {
+    // Code to be executed when the feature is enabled.
+}
+```
+
 ## How to extend
 
 Say you would like to enable a feature only for premium users on your website. You can write a custom Toggle as follows:

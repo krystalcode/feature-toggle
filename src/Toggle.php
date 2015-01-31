@@ -12,43 +12,27 @@
 namespace KrystalCode\FeatureToggle;
 
 /**
- * Provides easier syntax for calling Toggles. It does so by wrapping the normal
- * calling code into a closure and returning the closure for use in the
- * application.
+ * Provides easier syntax for calling Toggles.
  *
  * @author Dimitris Bozelos <dbozelos@gmail.com>
  */
 class Toggle
 {
-    public static function get($toggleType)
-    {
-        switch ($toggleType) {
-            case 'yaml':
-                return function ($input, $varName, $varValue = null) {
-                    $loader = new ConfigLoaderYaml(new \Symfony\Component\Yaml\Parser(), $input);
-                    $toggle = new ToggleConfig($loader, $varName, $varValue);
-                    return $toggle->on();
-                };
-            case 'php':
-                return function ($input, $varName, $varValue = null) {
-                    $loader = new ConfigLoaderPhp($input);
-                    $toggle = new ToggleConfig($loader, $varName, $varValue);
-                    return $toggle->on();
-                };
-            case 'ini':
-                return function ($input, $varName, $varValue = null) {
-                    $loader = new ConfigLoaderIni($input);
-                    $toggle = new ToggleConfig($loader, $varName, $varValue);
-                    return $toggle->on();
-                };
-            default:
-                throw new Exception(
-                    sprintf(
-                        'Unknown Toggle "%s", "yaml" and "php" are currently supported',
-                        $toggleType
-                    )
-                );
-                break;
-        }
+    public static function yaml($input, $varName, $varValue = null) {
+        $loader = new ConfigLoaderYaml(new \Symfony\Component\Yaml\Parser(), $input);
+        $toggle = new ToggleConfig($loader, $varName, $varValue);
+        return $toggle->on();
+    }
+
+    public static function php($input, $varName, $varValue = null) {
+        $loader = new ConfigLoaderPhp($input);
+        $toggle = new ToggleConfig($loader, $varName, $varValue);
+        return $toggle->on();
+    }
+
+    public static function ini($input, $varName, $varValue = null) {
+        $loader = new ConfigLoaderIni($input);
+        $toggle = new ToggleConfig($loader, $varName, $varValue);
+        return $toggle->on();
     }
 }

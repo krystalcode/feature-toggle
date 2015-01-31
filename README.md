@@ -101,18 +101,31 @@ if (Toggle::ini('absolute/path/to/config.ini', 'awesomefeature/'.$yourCurrentEnv
 }
 ```
 
-### Yii2 Framework
+### Integrations
 
-You will need to add your configuration in the params file as an array item with index 'featureToggle'. Using the same example as with YAML, your configuration file contents would be:
+#### Yii Framework
+
+You will need to add your configuration in the params.php file (Yii2) or in the main.php file (Yii1) as an array item with index 'featureToggle'. Using the same example as with YAML, your configuration file contents would be:
 
 ```
 <?php
-
+// Yii2
 return [
     'featureToggle' => [
         'awesomefeature/dev' => true,
         'awesomefeature/stage' => true,
         'awesomefeature/prod' => false,
+    ],
+];
+
+// Yii1
+return [
+    'params' => [
+        'featureToggle' => [
+            'awesomefeature/dev' => true,
+            'awesomefeature/stage' => true,
+            'awesomefeature/prod' => false,
+        ],
     ],
 ];
 ```
@@ -122,7 +135,13 @@ and your application code would be:
 ```
 use KrystalCode\FeatureToggle\Toggle;
 
+// Yii2
 if (Toggle::yii2('awesomefeature/'.$yourCurrentEnvironment)) {
+    // Code to be executed when the feature is enabled.
+}
+
+// Yii1
+if (Toggle::yii1('awesomefeature/'.$yourCurrentEnvironment)) {
     // Code to be executed when the feature is enabled.
 }
 ```

@@ -103,13 +103,13 @@ if (Toggle::ini('absolute/path/to/config.ini', 'awesomefeature/'.$yourCurrentEnv
 
 ### Yii2 Framework
 
-You will need to add your configuration in the params file as an array item with index 'feature-toggle'. Using the same example as with YAML, your configuration file contents would be:
+You will need to add your configuration in the params file as an array item with index 'featureToggle'. Using the same example as with YAML, your configuration file contents would be:
 
 ```
 <?php
 
 return [
-    'feature-toggle' => [
+    'featureToggle' => [
         'awesomefeature/dev' => true,
         'awesomefeature/stage' => true,
         'awesomefeature/prod' => false,

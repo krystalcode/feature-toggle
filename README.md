@@ -35,8 +35,7 @@ The following code will enable the feature on the development and stage environm
 ```
 use KrystalCode\FeatureToggle\Toggle;
 
-$toggle = Toggle::get('yaml');
-if ($toggle('absolute/path/to/config.yml', 'awesomefeature/'.$yourCurrentEnvironment)) {
+if (Toggle::yaml('absolute/path/to/config.yml', 'awesomefeature/'.$yourCurrentEnvironment)) {
     // Code to be executed when the feature is enabled.
 }
 ```
@@ -54,8 +53,7 @@ The following code will enable the feature when the value of the variable "theme
 ```
 use KrystalCode\FeatureToggle\Toggle;
 
-$toggle = Toggle::get('yaml');
-if ($toggle('absolute/path/to/config.yml', 'theme', 'blue')) {
+if (Toggle::yaml('absolute/path/to/config.yml', 'theme', 'blue')) {
     // Code to be executed when the feature is enabled.
 }
 ```
@@ -78,8 +76,7 @@ and your application code would be:
 ```
 use KrystalCode\FeatureToggle\Toggle;
 
-$toggle = Toggle::get('php');
-if ($toggle('absolute/path/to/config.php', 'awesomefeature/'.$yourCurrentEnvironment)) {
+if (Toggle::php('absolute/path/to/config.php', 'awesomefeature/'.$yourCurrentEnvironment)) {
     // Code to be executed when the feature is enabled.
 }
 ```
@@ -99,8 +96,7 @@ and your application code would be:
 ```
 use KrystalCode\FeatureToggle\Toggle;
 
-$toggle = Toggle::get('ini');
-if ($toggle('absolute/path/to/config.ini', 'awesomefeature/'.$yourCurrentEnvironment)) {
+if (Toggle::ini('absolute/path/to/config.ini', 'awesomefeature/'.$yourCurrentEnvironment)) {
     // Code to be executed when the feature is enabled.
 }
 ```

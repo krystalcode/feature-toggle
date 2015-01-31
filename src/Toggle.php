@@ -41,4 +41,10 @@ class Toggle
         $toggle = new ToggleConfig($loader, $varName, $varValue);
         return $toggle->on();
     }
+
+    public static function yii2($varName, $varValue = null) {
+        $loader = new ConfigLoaderArray(\Yii::$app->params['feature-toggle']);
+        $toggle = new ToggleConfig($loader, $varName, $varValue);
+        return $toggle->on();
+    }
 }

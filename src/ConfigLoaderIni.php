@@ -15,7 +15,8 @@ namespace KrystalCode\FeatureToggle;
  * Implements a configuration loader that gets the variables from a .ini file.
  * @see http://php.net/manual/en/function.parse-ini-file.php
  */
-class ConfigLoaderIni implements ConfigLoaderInterface {
+class ConfigLoaderIni implements ConfigLoaderInterface
+{
     protected $input;
 
     /**

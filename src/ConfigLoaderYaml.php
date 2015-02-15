@@ -18,7 +18,8 @@ use Symfony\Component\Yaml\Exception\ParseException;
  * Implements a configuration loader that gets the variables from a YAML file or
  * string.
  */
-class ConfigLoaderYaml implements ConfigLoaderInterface {
+class ConfigLoaderYaml implements ConfigLoaderInterface
+{
     protected $parser;
     protected $input;
 

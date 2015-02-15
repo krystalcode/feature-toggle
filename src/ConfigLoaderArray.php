@@ -14,7 +14,8 @@ namespace KrystalCode\FeatureToggle;
 /**
  * Implements a configuration loader that gets the variables from a PHP array.
  */
-class ConfigLoaderArray implements ConfigLoaderInterface {
+class ConfigLoaderArray implements ConfigLoaderInterface
+{
     protected $input;
 
     /**

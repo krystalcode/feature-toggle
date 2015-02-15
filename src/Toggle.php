@@ -18,37 +18,43 @@ namespace KrystalCode\FeatureToggle;
  */
 class Toggle
 {
-    public static function params(array $input, $varName, $varValue = null) {
+    public static function params(array $input, $varName, $varValue = null)
+    {
         $loader = new ConfigLoaderArray($input);
         $toggle = new ToggleConfig($loader, $varName, $varValue);
         return $toggle->on();
     }
 
-    public static function yaml($input, $varName, $varValue = null) {
+    public static function yaml($input, $varName, $varValue = null)
+    {
         $loader = new ConfigLoaderYaml(new \Symfony\Component\Yaml\Parser(), $input);
         $toggle = new ToggleConfig($loader, $varName, $varValue);
         return $toggle->on();
     }
 
-    public static function php($input, $varName, $varValue = null) {
+    public static function php($input, $varName, $varValue = null)
+    {
         $loader = new ConfigLoaderPhp($input);
         $toggle = new ToggleConfig($loader, $varName, $varValue);
         return $toggle->on();
     }
 
-    public static function ini($input, $varName, $varValue = null) {
+    public static function ini($input, $varName, $varValue = null)
+    {
         $loader = new ConfigLoaderIni($input);
         $toggle = new ToggleConfig($loader, $varName, $varValue);
         return $toggle->on();
     }
 
-    public static function yii1($varName, $varValue = null) {
+    public static function yii1($varName, $varValue = null)
+    {
         $loader = new ConfigLoaderArray(\Yii::app()->params['featureToggle']);
         $toggle = new ToggleConfig($loader, $varName, $varValue);
         return $toggle->on();
     }
 
-    public static function yii2($varName, $varValue = null) {
+    public static function yii2($varName, $varValue = null)
+    {
         $loader = new ConfigLoaderArray(\Yii::$app->params['featureToggle']);
         $toggle = new ToggleConfig($loader, $varName, $varValue);
         return $toggle->on();

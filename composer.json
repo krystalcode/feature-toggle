@@ -5,7 +5,7 @@
     "keywords": [],
     "homepage": "https://github.com/krystalcode/feature-toggle",
     "license": "MIT",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Dimitris Bozelos",

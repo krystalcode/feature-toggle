@@ -1,4 +1,4 @@
-[ ![Codeship Status for krystalcode/feature-toggle](https://codeship.io/projects/5d166660-314c-0132-ae62-7e635eaa275b/status)](https://codeship.io/projects/40068)
+[ ![Codeship Status for krystalcode/feature-toggle](https://codeship.io/projects/5d166660-314c-0132-ae62-7e635eaa275b/status)](https://codeship.io/projects/40068) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/67f27cbe-9125-4b7e-a111-24c2aa76f186/small.png)](https://insight.sensiolabs.com/projects/67f27cbe-9125-4b7e-a111-24c2aa76f186)
 
 # FeatureToggle
 

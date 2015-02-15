@@ -58,7 +58,7 @@ class ConfigLoaderYaml implements ConfigLoaderInterface {
         }
 
         try {
-            return $this->parser->parse($this->input);
+            $config = $this->parser->parse($this->input);
         } catch (ParseException $e) {
             if ($file) {
                 $e->setParsedFile($file);
@@ -66,5 +66,15 @@ class ConfigLoaderYaml implements ConfigLoaderInterface {
 
             throw $e;
         }
+
+        // If the yaml file contains only a single string, the result returned
+        // from the parser will be this string and no exception will be thrown.
+        // For our use case we expect an array or null if no configuration was
+        // loaded.
+        if (is_array($config)) {
+            return $config;
+        }
+
+        return null;
     }
 }

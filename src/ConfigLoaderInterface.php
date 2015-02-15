@@ -25,7 +25,7 @@ interface ConfigLoaderInterface
      * define the variables directly in the code, load them from a file, retrieve
      * them by an HTTP request to an external API or anything else.
      *
-     * @return array $config An array containing the configuration variables.
+     * @return array|null $config An array containing the configuration variables or null if the configuration could not be loaded.
      */
     public function load();
 }

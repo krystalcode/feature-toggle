@@ -1,5 +1,7 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/67f27cbe-9125-4b7e-a111-24c2aa76f186/small.png)](https://insight.sensiolabs.com/projects/67f27cbe-9125-4b7e-a111-24c2aa76f186) [![Codeship Status for krystalcode/feature-toggle](https://codeship.io/projects/5d166660-314c-0132-ae62-7e635eaa275b/status)](https://codeship.io/projects/40068)
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/krystalcode/feature-toggle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/krystalcode/feature-toggle/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/krystalcode/feature-toggle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/krystalcode/feature-toggle/?branch=master) [![Latest Stable Version](https://poser.pugx.org/krystalcode/feature-toggle/v/stable.svg)](https://packagist.org/packages/krystalcode/feature-toggle) [![License](https://poser.pugx.org/krystalcode/feature-toggle/license.svg)](https://packagist.org/packages/krystalcode/feature-toggle)
+
 # FeatureToggle
 
 ## About

@@ -12,3 +12,4 @@ tools:
     config:
       standard: "PSR2"
   sensiolabs_security_checker: true
+  external_code_coverage: true

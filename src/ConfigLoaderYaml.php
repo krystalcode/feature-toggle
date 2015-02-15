@@ -12,7 +12,7 @@
 namespace KrystalCode\FeatureToggle;
 
 use Symfony\Component\Yaml\Parser;
-use Symfony\Component\Yaml\ParseException;
+use Symfony\Component\Yaml\Exception\ParseException;
 
 /**
  * Implements a configuration loader that gets the variables from a YAML file or

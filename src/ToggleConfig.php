@@ -21,7 +21,7 @@ class ToggleConfig implements ToggleInterface
 {
     protected $varName;
     protected $varValue;
-    protected static $config = array();
+    protected static $config;
 
     /**
      * Constructor.
@@ -121,6 +121,6 @@ class ToggleConfig implements ToggleInterface
      */
     public static function clear()
     {
-        self::$config = array();
+        self::$config;
     }
 }

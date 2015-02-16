@@ -35,4 +35,18 @@ class ConfigLoaderIniTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue(false);
     }
+
+    public function testIfLoaderThrowsExceptionIfSyntaxIsInvalid()
+    {
+        $loader = new ConfigLoaderIni(__DIR__.'/invalid_syntax.ini');
+
+        try {
+            $loader->load();
+        } catch (\Exception $e) {
+            $this->assertTrue(true);
+            return;
+        }
+
+        $this->assertTrue(false);
+    }
 }

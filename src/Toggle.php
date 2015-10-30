@@ -11,6 +11,8 @@
 
 namespace KrystalCode\FeatureToggle;
 
+use Symfony\Component\Yaml\Parser as YamlParser;
+
 /**
  * Provides easier syntax for calling Toggles.
  *
@@ -27,7 +29,7 @@ class Toggle
 
     public static function yaml($input, $varName, $varValue = null)
     {
-        $loader = new ConfigLoaderYaml(new \Symfony\Component\Yaml\Parser(), $input);
+        $loader = new ConfigLoaderYaml(new YamlParser(), $input);
         $toggle = new ToggleConfig($loader, $varName, $varValue);
         return $toggle->on();
     }
@@ -56,6 +58,17 @@ class Toggle
     public static function yii2($varName, $varValue = null)
     {
         $loader = new ConfigLoaderArray(\Yii::$app->params['featureToggle']);
+        $toggle = new ToggleConfig($loader, $varName, $varValue);
+        return $toggle->on();
+    }
+
+    /**
+     * @Issue("Create a Symonfy bundle for better integration incl. Twig extension")
+     */
+    public static function symfony2($varName, $varValue = null)
+    {
+        $input = realpath(__DIR__ . '/../../../../app/config/feature-toggle.yml');
+        $loader = new ConfigLoaderYaml(new YamlParser(), $input);
         $toggle = new ToggleConfig($loader, $varName, $varValue);
         return $toggle->on();
     }
